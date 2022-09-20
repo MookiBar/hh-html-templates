@@ -1,0 +1,29 @@
+{% extends 'skel.html' %}
+
+{% block head %}
+<title>Helping Hands - debug</title>
+{% endblock %}
+
+{% block body %}
+<p>
+COMMAND-LINE ARGS:
+<br>
+&nbsp; database (filename): {{dbloc}}
+<br><br>
+DATABASE:
+&nbsp; 
+SITE:
+&nbsp; browser args:
+<table border=1>
+{% for key, value in reqargs.items() %}
+<tr>
+	<th>{{ key }}</th>
+	<td>{{ value }}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+</p>
+{% endblock %}
+
