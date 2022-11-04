@@ -1,0 +1,32 @@
+{% extends "public/base_template/public_template.html" %}
+
+{% block title %}Helping Hands | Register{% endblock %}
+
+{% block main %}
+
+<h1 id="title">Organization Account Registration</h1>
+<hr>
+<form action="/register" method="POST">
+    <div class="form-group">
+        <label>Organization Name</label>
+        <input class="form-control" type="text" name="org_name">
+    </div>
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" type="text" name="username">
+    </div>
+
+    <div class="form-group">
+        <label>Organization Email</label>
+        <input class="form-control" type="email" name="org_email">
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="password" name="password">
+    </div>
+
+    <button type="submit" class="submit-btn">Register</button>
+</form>
+
+{% endblock %}
