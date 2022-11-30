@@ -1,0 +1,71 @@
+{% extends "public/base_template/public_template.html" %}
+
+{% block title %}Helping Hands | Locality Resource Page{% endblock %}
+
+{% block main %}
+<div class="content">
+    {{loc.Name}}
+    <br>
+    {{loc.Address}}
+    <br>
+    {{loc.PhoneNumber}}
+    <br>
+    {{loc.Hours}}
+    <br><br>
+
+    <b><a class='fs-5'>Services:</a></b><br>
+    <!--services will be looped through and displayed-->
+    <var>serviceName</var>: {{loc.serviceName}}
+
+    <br><br>
+    {% if {{loc.AcceptingVolunteers}} == True %}
+        <b>Accepting Volunteers? </b><a style="color:green;"> Yes</a><br>
+        <b>Notice to Volunteers</b><br>
+        <textbox class='textbox'>{{loc.VolunteerNotice}}</textbox><br>
+    {% else %}
+        <b>Accepting Volunteers?</b><a style="color:red;"> Not at this time</a><br>
+        <b>Notice to Volunteers</b><br>
+        <textbox class='textbox'>Please check back in with us at a later date!</textbox><br>
+    {% endif %}
+    
+    <br><b>Notice to those Seeking Resources:</b><br>
+    <textbox class='textbox'>{{loc.HelpSeekerNotice}}</textbox>
+
+    <br><br>
+    {% if {{loc.ProvidesTransportation}} == True %}
+        <b>Provides Transportation? </b><a style="color:green;"> Yes</a><br>
+    {% else %}
+        <b>Provides Transportation? </b><a style="color:red;"> No</a><br>
+    {% endif %}
+
+    <!--Voting needs to display thumb up or thumb down. Should loop through all votes tied to this pageID-->
+    <!--true => ++thumb up count-->
+    <!--false => ++thumb down count-->
+    <br><br>
+    <b>Is this location safe? </b><a>{{safeVote.Vote}}</a><br>
+    <b>Is this location sanitary? </b><a>{{cleanVote.Vote}}</a><br>
+    <b>Is staff responsive? </b><a>{{responsiveVote.Vote}}</a><br><br>
+
+    <b>Linked Organizations: </b><br>
+    <!--all linked organizations will be looped through and displayed-->
+    {{loc.OrganizaionID}}<br><br>
+
+    <b>Linked Programs: </b><br>
+    <!--all linked programs will be looped through and displayed-->
+    {{loc.ProgramID}}<br><br>
+
+    <b>Forum:</b><br>
+    <!--forum posts will be looped through and displayed-->
+    <div class="row">
+        <div class="col">
+            {{forum.UserID}}
+        </div>
+        <div class="col">
+            {{forum.TimeStamp}}
+        </div>
+        <div class="col">
+            {{forum.Comment}}
+        </div>
+    </div>
+</div>
+{% endblock %}
