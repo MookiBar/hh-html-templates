@@ -1,0 +1,57 @@
+{% extends "public/base_template/public_template.html" %}
+
+{% block title %}Helping Hands | Org Resource Page {% endblock %}
+
+{% block main %}
+
+<div class="resource-container">
+    <div class="resource-name">
+        <h1>{{org.Name}}</h1>
+        <img src="https://www.dunamis.co.id/wp-content/uploads/2019/12/Vektor-16.png" alt="">
+    </div>
+
+    <div class="resource-content">
+        <div class="resource-info">
+        <h5>Address: {{org.Address}}</h5>
+        <h5>Hours: {{org.Hours}}</h5>
+        <h5>Phone Number: {{org.Number}}</h5>
+    </div>
+        
+        <div class="resource-volunteer">
+            <div class="accept-volunteer">
+                <h5>Accepting Volunteers? </h4>
+                    {% if acceptingVolunteers %}
+                        <h5 style='color:green;'>Yes</h5>
+                    {% else %}
+                        <h5 style='color:red;'>Not at this time</h5>
+                    {% endif %}
+            </div>
+
+            <div class="notice-volunteer">
+                <h5><b>NOTICE</b> to Volunteers</h5>
+                <var>{{org.VolunteerNotice}}</var>
+            </div>
+        </div>
+
+        <div class="resource-risk">
+                <h5><b>NOTICE</b> to those Seeking Help</h5>
+                <var>{{org.HelpSeekerNotice}}</var>
+        </div>
+
+        <div class="resource-list">
+            <h4>Currently Offering:</h4>
+                <div class="services">
+                    <ul>
+                    {% for srvc in services %}
+                        {% if org[srvc] %}
+                        <li>
+                            {{srvc}}
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
+        </div>
+    </div>
+
+{% endblock %}
