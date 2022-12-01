@@ -20,22 +20,25 @@
         <div class="resource-volunteer">
             <div class="accept-volunteer">
                 <h5>Accepting Volunteers? </h4>
-                    {% if acceptingVolunteers %}
+                    {% if org.acceptingVolunteers %}
                         <h5 style='color:green;'>Yes</h5>
+                        <div class="notice-volunteer">
+                            <h5><b>NOTICE</b> to Volunteers</h5>
+                            <textbox class='textbox'>{{org.VolunteerNotice}}</textbox>
+                        </div>
                     {% else %}
-                        <h5 style='color:red;'>Not at this time</h5>
+                            <h5 style='color:red;'>Not at this time</h5>
+                        <div class="notice-volunteer">
+                            <h5><b>NOTICE</b> to Volunteers</h5>
+                            <textbox class="textbox">Please check back in with us at a later date!</textbox>
+                        </div>
                     {% endif %}
-            </div>
-
-            <div class="notice-volunteer">
-                <h5><b>NOTICE</b> to Volunteers</h5>
-                <var>{{org.VolunteerNotice}}</var>
             </div>
         </div>
 
         <div class="resource-risk">
                 <h5><b>NOTICE</b> to those Seeking Help</h5>
-                <var>{{org.HelpSeekerNotice}}</var>
+                <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
         </div>
 
         <div class="resource-list">
@@ -53,5 +56,5 @@
                 </div>
         </div>
     </div>
-
+</div>
 {% endblock %}
