@@ -1,48 +1,59 @@
 {% extends "public/base_template/public_template.html" %}
 
-{% block title %}Helping Hands | Organization Resource Page{% endblock %}
+{% block title %}Helping Hands | Org Resource Page {% endblock %}
 
 {% block main %}
-<div class="content">
-    {{org.Name}}
-    <br>
-    {{org.HQAddress}}
-    <br>
-    {{org.PhoneNumber}}
-    <br>
-    {{org.Hours}}
-    <br><br>
 
-    <b><a class='fs-5'>Services:</a></b><br>
-    <!--services will be looped through and displayed-->
-    <var>serviceName</var>: {{org.serviceName}}
+<div class="resource-container">
+    <div class="resource-name">
+        <h1>{{org.Name}}</h1>
+        <img src="https://www.dunamis.co.id/wp-content/uploads/2019/12/Vektor-16.png" alt="">
+    </div>
 
-    <br><br>
-    {% if {{org.AcceptingVolunteers}} == True %}
-        <b>Accepting Volunteers? </b><a style="color:green;"> Yes</a><br>
-        <b>Notice to Volunteers</b><br>
-        <textbox class='textbox'>{{org.VolunteerNotice}}</textbox><br>
-    {% else %}
-        <b>Accepting Volunteers?</b><a style="color:red;"> Not at this time</a><br>
-        <b>Notice to Volunteers</b><br>
-        <textbox class='textbox'>Please check back in with us at a later date!</textbox><br>
-    {% endif %}
-    
-    <br><b>Notice to those Seeking Resources:</b><br>
-    <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox><br><br>
-
-
-    <b>Forum:</b><br>
-    <!--forum posts will be looped through and displayed-->
-    <div class="row">
-        <div class="col">
-            {{forum.UserID}}
+    <div class="resource-content">
+        <div class="resource-info">
+        <h5>Address: {{org.Address}}</h5>
+        <h5>Hours: {{org.Hours}}</h5>
+        <h5>Phone Number: {{org.Number}}</h5>
+    </div>
+        
+        <div class="resource-volunteer">
+            <div class="accept-volunteer">
+                <h5>Accepting Volunteers? </h4>
+                    {% if org.acceptingVolunteers %}
+                        <h5 style='color:green;'>Yes</h5>
+                        <div class="notice-volunteer">
+                            <h5><b>NOTICE</b> to Volunteers</h5>
+                            <textbox class='textbox'>{{org.VolunteerNotice}}</textbox>
+                        </div>
+                    {% else %}
+                            <h5 style='color:red;'>Not at this time</h5>
+                        <div class="notice-volunteer">
+                            <h5><b>NOTICE</b> to Volunteers</h5>
+                            <textbox class="textbox">Please check back in with us at a later date!</textbox>
+                        </div>
+                    {% endif %}
+            </div>
         </div>
-        <div class="col">
-            {{forum.TimeStamp}}
+
+        <div class="resource-risk">
+                <h5><b>NOTICE</b> to those Seeking Help</h5>
+                <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
         </div>
-        <div class="col">
-            {{forum.Comment}}
+
+        <div class="resource-list">
+            <h4>Currently Offering:</h4>
+                <div class="services">
+                    <ul>
+                    {% for srvc in services %}
+                        {% if org[srvc] %}
+                        <li>
+                            {{srvc}}
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </div>
         </div>
     </div>
 </div>
