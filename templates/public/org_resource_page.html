@@ -49,8 +49,16 @@
             <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
         </div>
 
+        <!--Voting needs to display thumb up or thumb down. Should loop through all votes tied to this pageID-->
+        <!--true => ++thumb up count-->
+        <!--false => ++thumb down count-->
+        <div class="resource-risk">
+            <h5>Is staff responsive? <a>{{org.Vote}}</a></h5>
+        </div>
+
         <div class="resource-risk">
             <h5><b>Forum:</b></h5>
+            <hr>
             <div class="forum-comment">
                 <div class="forum-header">
                     <div class="forum-user-info">
