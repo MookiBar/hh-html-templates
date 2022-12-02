@@ -7,7 +7,7 @@
 <div class="resource-container">
    <div class="resource-name">
         <h1>{{prog.Name}}</h1>
-        <img src="https://www.shimadzu.com.sg/an/sites/shimadzu.com.sg.an/files/resource-library-01_0.png" alt=""> 
+        <img src="{{prog.ProgImage}}" alt="">
     </div>
    
    <div class="resource-content">
@@ -53,6 +53,10 @@
         <!--false => ++thumb down count-->
         <div class="resource-risk">
             <h5>Is staff responsive? <a>{{prog.Vote}}</a></h5>
+        </div>
+
+        <div class="resource-risk">
+            <h5>Website Link: <a style="color:blue" target="_blank" href="{{prog.WebsiteLink}}">{{prog.WebsiteLink}}</a></h5>
         </div>
 
         <div class="resource-risk">
