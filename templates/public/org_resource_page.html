@@ -7,7 +7,7 @@
 <div class="resource-container">
     <div class="resource-name">
         <h1>{{org.Name}}</h1>
-        <img src="https://www.dunamis.co.id/wp-content/uploads/2019/12/Vektor-16.png" alt="">
+        <img src="{{org.OrgImage}}" alt="">
     </div>
 
     <div class="resource-content">
@@ -56,6 +56,10 @@
             <h5>Is staff responsive? <a>{{org.Vote}}</a></h5>
         </div>
 
+        <div class="resource-risk">
+            <h5>Website Link: <a style="color:blue" target="_blank" href="{{org.WebsiteLink}}">{{org.WebsiteLink}}</a></h5>
+        </div>
+        
         <div class="resource-risk">
             <h5><b>Forum:</b></h5>
             <hr>

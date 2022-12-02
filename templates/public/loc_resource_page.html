@@ -7,7 +7,7 @@
 <div class="resource-container">
     <div class="resource-name">
         <h1>{{loc.Name}}</h1>
-        <img src="https://www.dunamis.co.id/wp-content/uploads/2019/12/Vektor-16.png" alt="">
+        <img src="{{loc.LocImage}}" alt="">
     </div>
 
     <div class="resource-content">
@@ -64,6 +64,10 @@
             <h5>Is this location safe? <a>{{loc.Vote}}</a></h5>
             <h5>Is this location sanitary? <a>{{loc.Vote}}</a></h5>
             <h5>Is staff responsive? <a>{{loc.Vote}}</a></h5>
+        </div>
+
+        <div class="resource-risk">
+            <h5>Website Link: <a style="color:blue" target="_blank" href="{{loc.WebsiteLink}}">{{loc.WebsiteLink}}</a></h5>
         </div>
     
         <div class="resource-risk">
