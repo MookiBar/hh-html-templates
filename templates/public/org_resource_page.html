@@ -12,48 +12,58 @@
 
     <div class="resource-content">
         <div class="resource-info">
-        <h5>Address: {{org.Address}}</h5>
-        <h5>Hours: {{org.Hours}}</h5>
-        <h5>Phone Number: {{org.Number}}</h5>
-    </div>
+            <h5>Address: {{org.HQAddress}}</h5>
+            <h5>Hours: {{org.Hours}}</h5>
+            <h5>Phone Number: {{org.PhoneNumber}}</h5>
+        </div>
         
-        <div class="resource-volunteer">
-            <div class="accept-volunteer">
-                <h5>Accepting Volunteers? </h4>
-                    {% if org.acceptingVolunteers %}
-                        <h5 style='color:green;'>Yes</h5>
-                        <div class="notice-volunteer">
-                            <h5><b>NOTICE</b> to Volunteers</h5>
-                            <textbox class='textbox'>{{org.VolunteerNotice}}</textbox>
-                        </div>
-                    {% else %}
-                            <h5 style='color:red;'>Not at this time</h5>
-                        <div class="notice-volunteer">
-                            <h5><b>NOTICE</b> to Volunteers</h5>
-                            <textbox class="textbox">Please check back in with us at a later date!</textbox>
-                        </div>
-                    {% endif %}
-            </div>
+        <div class="resource-risk">
+            <h5>Currently Offering:</h5>
+                <div class="services">
+                    <ul>
+                        {% for srvc in services %}
+                            {% if org[srvc] %}
+                            <li>
+                                {{srvc}}
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
         </div>
 
         <div class="resource-risk">
-                <h5><b>NOTICE</b> to those Seeking Help</h5>
-                <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
+            {% if org.AcceptingVolunteers %}
+                <h5>Accepting Volunteers? <a style='color:green;'>Yes</a></h5>
+                <h5><b>NOTICE</b> to Volunteers</h5>
+                <textbox class='textbox'>{{org.VolunteerNotice}}</textbox>
+            {% else %}
+                <h5>Accepting Volunteers? <a style='color:red;'>Not at this time</a></h5>
+                <h5><b>NOTICE</b> to Volunteers</h5>
+                <textbox class="textbox">Please check back in with us at a later date!</textbox>
+            {% endif %}
         </div>
 
-        <div class="resource-list">
-            <h4>Currently Offering:</h4>
-                <div class="services">
-                    <ul>
-                    {% for srvc in services %}
-                        {% if org[srvc] %}
-                        <li>
-                            {{srvc}}
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
+        <div class="resource-risk">
+            <h5><b>NOTICE</b> to those Seeking Help</h5>
+            <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
+        </div>
+
+        <div class="resource-risk">
+            <h5><b>Forum:</b></h5>
+            <div class="forum-comment">
+                <div class="forum-header">
+                    <div class="forum-user-info">
+                        <ul>
+                            {{forumposts.UserID}}
+                            {{forumposts.TimeStamp}}
+                        </ul>
+                    </div>
+                    <div class="forum-content">
+                        <textbox disabled cols="60" rows="5">{{forumposts.Comment}}</textbox>
+                    </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
