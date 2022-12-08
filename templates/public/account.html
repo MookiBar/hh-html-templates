@@ -1,0 +1,68 @@
+{% extends "public/base_template/public_template.html" %} {% block title
+%}Helping Hands | Log In{% endblock %} {% block main %}
+
+<br>
+<div class="register-form">
+  <div class="wrapper">
+    <div class="title-text">
+      <div id="user-title" class="title login">Account Info</div>
+    </div>
+{% if error_string %}
+<p style="color:red">{{error_string}}</p>
+{% endif %}
+{% if success_string %}
+<p style="color:green">{{success_string}}</p>
+{% endif %}
+    <div class="form-container">
+      <div class="form-inner">
+{% if logged_in %}
+        <form action="#" class="login">
+          <div class="field">
+		  <input type="email" placeholder="Email Address" name='Email' required value="{{user.Email}}" />
+          </div>
+          <div class="field">
+		  <input type="password" placeholder="Password" name='Password' required value="{{user.Password}}" />
+          </div>
+
+          <div class="field">
+		  <input type="text" placeholder="First Name" name='FirstName' required value="{{user.FirstName}}" />
+          </div>
+          <div class="field">
+		  <input type="text" placeholder="Last Name" name='LastName' required value="{{user.LastName}}" />
+          </div>
+          <div class="field">
+		  <input type="text" placeholder="Phone Number" name='PhoneNumber' required value="{{user.PhoneNumber}}" />
+          </div>
+
+
+
+
+
+
+
+          <div class="signup-link">
+          Want to represent an organization or resource? <a href="/resource_register">Register now</a>
+        </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" name="login" value="Update" />
+          </div>
+        </form>
+        <form action="#" class="signup">
+          <div class="field">
+            <input type="text" placeholder="Organization Name" name='org_name' required />
+          </div>
+        <div class="form-group">
+          <input id="submit" class="submit-btn" type="submit" value="SUBMIT">
+        </div>
+        </form>
+{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
+{% endblock %}
