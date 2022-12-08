@@ -5,10 +5,17 @@
 <div class="register-form">
   <div class="wrapper">
     <div class="title-text">
-      <div id="user-title" class="title login">Login</div>
+      <div id="user-title" class="title login">Account Login</div>
     </div>
+{% if error_string %}
+<p style="color:red">{{error_string}}</p>
+{% endif %}
+{% if success_string %}
+<p style="color:green">{{success_string}}</p>
+{% endif %}
     <div class="form-container">
       <div class="form-inner">
+{% if allow_login %}
         <form action="#" class="login">
           <div class="field">
             <input type="email" placeholder="Email Address" name='email' required />
@@ -21,7 +28,7 @@
         </div>
           <div class="field btn">
             <div class="btn-layer"></div>
-            <input type="submit" value="Register" />
+            <input type="submit" name="login" value="Login" />
           </div>
         </form>
         <form action="#" class="signup">
@@ -32,6 +39,7 @@
           <input id="submit" class="submit-btn" type="submit" value="SUBMIT">
         </div>
         </form>
+{% endif %}
       </div>
     </div>
   </div>
