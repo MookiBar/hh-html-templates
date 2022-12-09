@@ -1,0 +1,34 @@
+﻿<html lang="en">
+<head>
+
+</head>
+<body>
+
+    <!-- This code asks the user for their location and stores it in localStorage as 'storedLati' and 'storedLongi'
+        To see the localStorage, go to inspect element (ctrl+shift+j) and then go to application tab. From there, go to localStorage folder.-->
+    <script>
+        //creates deviceLat and deviceLong as value 0 to prevent issues.
+        var deviceLat = 0;
+        var deviceLong = 0;
+
+        //within this script tag is a function to ask the user for permission to use device location. If user says yes, we store lat and long in localStorage. This data persists even after a browser is closed.
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                deviceLat = position.coords.latitude;
+                deviceLong = position.coords.longitude;
+                window.localStorage.setItem('storedLati', deviceLat);
+                window.localStorage.setItem('storedLongi', deviceLong);
+
+            }, function () {
+                //handle location error (i.e. if user disallowed location access manually)
+                //The intent is for me to put something in here to request an alternate way to get location if the user decides not to allow device location
+                //This is intentionally left blank becuase I'm not done with zip code localization yet.
+            });
+        } else {
+            // Browser doesn't support Geolocation
+            //The intent is for me to put something similar as above in here.
+        }
+    </script>
+</body>
+</html>
