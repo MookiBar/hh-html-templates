@@ -65,12 +65,24 @@
             <!-- <li class="nav-item mx-auto">
               <a class="nav-link" href="/admin/dashboard">Admin</a>
             </li> -->
+{% if user %}
+              <li class="nav-item mx-auto">
+              <a class="nav-link" href="/account">Account</a>
+              </li>
+              <li class="nav-item mx-auto">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+
+{% else %}
               <li class="nav-item mx-auto">
               <a class="nav-link" href="/login">Login</a>
               </li>
               <li class="nav-item mx-auto">
                 <a class="nav-link" href="/register">Register</a>
               </li>
+{% endif %}
+
+
           </ul>
         </div>
       </div>

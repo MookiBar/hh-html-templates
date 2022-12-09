@@ -5,7 +5,7 @@
 <div class="register-form">
   <div class="wrapper">
     <div class="title-text">
-      <div id="user-title" class="title login">Account Login</div>
+      <div id="user-title" class="title login">Account Info</div>
     </div>
 {% if error_string %}
 <p style="color:red">{{error_string}}</p>
@@ -15,20 +15,37 @@
 {% endif %}
     <div class="form-container">
       <div class="form-inner">
-{% if allow_login %}
+{% if logged_in %}
         <form action="#" class="login">
           <div class="field">
-            <input type="email" placeholder="Email Address" name='email' required />
+		  <input type="email" placeholder="Email Address" name='Email' required value="{{user.Email}}" />
           </div>
           <div class="field">
-            <input type="password" placeholder="Password" name='password' required />
+		  <input type="password" placeholder="Password" name='Password' required value="{{user.Password}}" />
           </div>
+
+          <div class="field">
+		  <input type="text" placeholder="First Name" name='FirstName' required value="{{user.FirstName}}" />
+          </div>
+          <div class="field">
+		  <input type="text" placeholder="Last Name" name='LastName' required value="{{user.LastName}}" />
+          </div>
+          <div class="field">
+		  <input type="text" placeholder="Phone Number" name='PhoneNumber' required value="{{user.PhoneNumber}}" />
+          </div>
+
+
+
+
+
+
+
           <div class="signup-link">
-          No account? <a href="/register">Register now</a>
+          Want to represent an organization or resource? <a href="/resource_register">Register now</a>
         </div>
           <div class="field btn">
             <div class="btn-layer"></div>
-            <input type="submit" name="login" value="Login" />
+            <input type="submit" name="login" value="Update" />
           </div>
         </form>
         <form action="#" class="signup">
