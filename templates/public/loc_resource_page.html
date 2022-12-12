@@ -57,13 +57,42 @@
             {% endif %}
         </div>            
 
-        <!--Voting needs to display thumb up or thumb down. Should loop through all votes tied to this pageID-->
-        <!--true => ++thumb up count-->
-        <!--false => ++thumb down count-->
         <div class="resource-risk">
-            <h5>Is this location safe? <a>{{loc.Vote}}</a></h5>
-            <h5>Is this location sanitary? <a>{{loc.Vote}}</a></h5>
-            <h5>Is staff responsive? <a>{{loc.Vote}}</a></h5>
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+            </head>
+            <body>
+                <h5>Is this location safe?  
+                    <div class="like grow">
+                        <button class="fa fa-thumbs-up like" type="submit" name="upsafe" style="background-color: white;" aria-hidden="true"></button>
+                    </div>
+                    <a>{{upsafe}}</a>
+                    <div class="dislike grow">
+                        <button class="fa fa-thumbs-down like" type="submit" name="downsafe" style="background-color: white;" aria-hidden="true"></button>
+                    </div>
+                    <a>{{downsafe}}</a>
+                </h5>
+                <h5>Is this location sanitary?  
+                    <div class="like grow">
+                        <button class="fa fa-thumbs-up like" type="submit" name="upclean" style="background-color: white;" aria-hidden="true"></button>
+                    </div>
+                    <a>{{upclean}}</a>
+                    <div class="dislike grow">
+                        <button class="fa fa-thumbs-down like" type="submit" name="downclean" style="background-color: white;" aria-hidden="true"></button>
+                    </div>
+                    <a>{{downclean}}</a>
+                </h5>
+                <h5>Is staff responsive?  
+                    <div class="like grow">
+                        <button class="fa fa-thumbs-up like" type="submit" name="upresp" style="background-color: white;" aria-hidden="true"></button>
+                    </div>
+                    <a>{{upresp}}</a>
+                    <div class="dislike grow">
+                        <button class="fa fa-thumbs-down like" type="submit" name="downresp" style="background-color: white;" aria-hidden="true"></button>
+                    </div>
+                    <a>{{downresp}}</a>
+                </h5>
+            </body>
         </div>
 
         <div class="resource-risk">
@@ -73,11 +102,19 @@
         <div class="resource-risk">
             <h5>Linked Organizations: </h5>
             <ul>
-                <li>{{loc.OrganizationID}}</li>
+                {% if loc.OrganizationID %}
+                    <li>{{orgs[0][0]}}</li> 
+                {% else %}
+                    <li>None</li>
+                {% endif %}
             </ul>
             <h5>Linked Programs: </h5>
             <ul>
-                <li>{{loc.ProgramID}}</li>
+                {% if loc.ProgramID %}
+                    <li>{{progs[0][0]}}</li>
+                {% else %}
+                    <li>None</li>
+                {% endif %}
             </ul>
         </div>
     
@@ -110,7 +147,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for forums in forumposts %}
+                    {% for forums in forumposts|sort(attribute='TimeStamp', reverse = True) %}
                     <tr>
                         <td>{{forums[0]}}</td>
                         <td>{{forums[1]}}</td>

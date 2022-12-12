@@ -1013,3 +1013,21 @@
     border: 1px solid black;
     padding: 8px;
   }
+  
+  .like,
+  .dislike {
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .dislike:hover,
+  .like:hover {
+    color: #2EBDD1;
+    transition: all .2s ease-in-out;
+    transform: scale(1.1);
+  }
+  
+  .active {
+    color: #2EBDD1;
+  }
