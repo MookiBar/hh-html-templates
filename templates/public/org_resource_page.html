@@ -49,11 +49,22 @@
             <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
         </div>
 
-        <!--Voting needs to display thumb up or thumb down. Should loop through all votes tied to this pageID-->
-        <!--true => ++thumb up count-->
-        <!--false => ++thumb down count-->
         <div class="resource-risk">
-            <h5>Is staff responsive? <a>{{org.Vote}}</a></h5>
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+            </head>
+            <body>
+                <h5>Is staff responsive?  
+                    <div class="like grow">
+                        <i class="fa fa-thumbs-up like" type="submit" name="upresp" style="background-color: white;" aria-hidden="true"></i>
+                    </div>
+                    <a>{{upresp}}</a>
+                    <div class="dislike grow">
+                        <i class="fa fa-thumbs-down like" type="submit" name="downresp" style="background-color: white;" aria-hidden="true"></i>
+                    </div>
+                    <a>{{downresp}}</a>
+                </h5>
+            </body>
         </div>
 
         <div class="resource-risk">
