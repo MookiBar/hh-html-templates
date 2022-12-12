@@ -100,7 +100,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for forums in forumposts %}
+                    {% for forums in forumposts|sort(attribute='TimeStamp', reverse = True) %}
                     <tr>
                         <td>{{forums[0]}}</td>
                         <td>{{forums[1]}}</td>
