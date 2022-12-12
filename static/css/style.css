@@ -109,6 +109,17 @@
     padding: 10px;
     text-transform: uppercase;
   }
+
+  .forum-button {
+    background-color: #3877c7;
+    color: white;
+    cursor: pointer;
+    border-width: 0px 0px 0px 0px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    text-transform: uppercase;
+  }
   
   .button:hover {
     background-color: #8ed2d1;
@@ -990,4 +1001,15 @@
   #map {
     height: 520px;
     width: 700px;
+  }
+
+  table {
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
   }
