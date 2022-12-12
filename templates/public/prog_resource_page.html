@@ -60,22 +60,45 @@
         </div>
 
         <div class="resource-risk">
-            <h5><b>Forum:</b></h5>
+            <h5><b>Forum</b></h5>
             <hr>
-            <div class="forum-comment">
-                <div class="forum-header">
-                    <div class="forum-user-info">
-                        <ul>
-                            {{forumposts.UserID}}
-                            {{forumposts.TimeStamp}}
-                        </ul>
+            <form>
+                <div class="title-text">
+                    <div id="user-title" class="title login">Post a Comment to the Forum</div>
+                </div>
+                <div class="form-inner">
+                    <div class="field">
+                        <input type="hidden" name="UserID" value="UserID">
                     </div>
-                    <div class="forum-content">
-                        <textbox disabled cols="60" rows="5">{{forumposts.Comment}}</textbox>
+                    <div class="field">
+                        <input type="hidden" name="TimeStamp" value="TimeStamp">
+                    </div>
+                    <div class="field text-center">
+                        <input type="text" size="47" placeholder="Comment" name='Comment' required />
+                        <button class="forum-button" type="submit" style="display:inline">Post</button>
                     </div>
                 </div>
-            </div>
-        </div>    
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>UserID</th>
+                        <th>Date/Time</th>
+                        <th>Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for forums in forumposts %}
+                    <tr>
+                        <td>{{forums[0]}}</td>
+                        <td>{{forums[1]}}</td>
+                        <td>{{forums[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+        </div> 
    </div>
 </div>
 {% endblock %}
