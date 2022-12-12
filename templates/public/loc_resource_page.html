@@ -102,11 +102,19 @@
         <div class="resource-risk">
             <h5>Linked Organizations: </h5>
             <ul>
-                <li>{{loc.OrganizationID}}</li>
+                {% if loc.OrganizationID %}
+                    <li>{{orgs[0][0]}}</li> 
+                {% else %}
+                    <li>None</li>
+                {% endif %}
             </ul>
             <h5>Linked Programs: </h5>
             <ul>
-                <li>{{loc.ProgramID}}</li>
+                {% if loc.ProgramID %}
+                    <li>{{progs[0][0]}}</li>
+                {% else %}
+                    <li>None</li>
+                {% endif %}
             </ul>
         </div>
     
