@@ -56,44 +56,16 @@
                 <h5>Provides Transportation? <a style="color:red;">No</a></h5>
             {% endif %}
         </div>            
-
+{% include "public/thumb_voting.html" %}
+<!--
         <div class="resource-risk">
             <head>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
             </head>
             <body>
-                <h5>Is this location safe?  
-                    <div class="like grow">
-                        <button class="fa fa-thumbs-up like" type="submit" name="upsafe" style="background-color: white;" aria-hidden="true"></button>
-                    </div>
-                    <a>{{upsafe}}</a>
-                    <div class="dislike grow">
-                        <button class="fa fa-thumbs-down like" type="submit" name="downsafe" style="background-color: white;" aria-hidden="true"></button>
-                    </div>
-                    <a>{{downsafe}}</a>
-                </h5>
-                <h5>Is this location sanitary?  
-                    <div class="like grow">
-                        <button class="fa fa-thumbs-up like" type="submit" name="upclean" style="background-color: white;" aria-hidden="true"></button>
-                    </div>
-                    <a>{{upclean}}</a>
-                    <div class="dislike grow">
-                        <button class="fa fa-thumbs-down like" type="submit" name="downclean" style="background-color: white;" aria-hidden="true"></button>
-                    </div>
-                    <a>{{downclean}}</a>
-                </h5>
-                <h5>Is staff responsive?  
-                    <div class="like grow">
-                        <button class="fa fa-thumbs-up like" type="submit" name="upresp" style="background-color: white;" aria-hidden="true"></button>
-                    </div>
-                    <a>{{upresp}}</a>
-                    <div class="dislike grow">
-                        <button class="fa fa-thumbs-down like" type="submit" name="downresp" style="background-color: white;" aria-hidden="true"></button>
-                    </div>
-                    <a>{{downresp}}</a>
-                </h5>
             </body>
         </div>
+-->
 
         <div class="resource-risk">
             <h5>Website Link: <a style="color:blue" target="_blank" href="{{loc.WebsiteLink}}">{{loc.WebsiteLink}}</a></h5>
@@ -102,39 +74,32 @@
         <div class="resource-risk">
             <h5>Linked Organizations: </h5>
             <ul>
-                {% if loc.OrganizationID %}
-                    <li>{{orgs[0][0]}}</li> 
+                {% if linked_org %}
+                    <li><a href="/org?orgid={{linked_org.OrganizationID}}">{{linked_org.Name}}({{linked_org.OrganizationID}})</a></li> 
                 {% else %}
                     <li>None</li>
                 {% endif %}
             </ul>
             <h5>Linked Programs: </h5>
             <ul>
-                {% if loc.ProgramID %}
-                    <li>{{progs[0][0]}}</li>
+                {% if linked_prog %}
+		<li><a href="/prog?progid={{linked_prog.ProgramID}}">{{linked_prog.Name}}({{linked_prog.ProgramID}})</a></li>
                 {% else %}
                     <li>None</li>
                 {% endif %}
             </ul>
         </div>
-    
         <div class="resource-risk">
             <h5><b>Forum</b></h5>
             <hr>
-            <form>
+            <form action="" method="post">
                 <div class="title-text">
                     <div id="user-title" class="title login">Post a Comment to the Forum</div>
                 </div>
                 <div class="form-inner">
-                    <div class="field">
-                        <input type="hidden" name="UserID" value="UserID">
-                    </div>
-                    <div class="field">
-                        <input type="hidden" name="TimeStamp" value="TimeStamp">
-                    </div>
                     <div class="field text-center">
                         <input type="text" size="47" placeholder="Comment" name='Comment' required />
-                        <button class="forum-button" type="submit" style="display:inline">Post</button>
+                        <button class="forum-button" type="submit" style="display:inline" name="submitcomment" value="1">Post</button>
                     </div>
                 </div>
             </form>
