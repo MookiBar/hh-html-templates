@@ -16,21 +16,21 @@
     <div class="form-container">
       <div class="form-inner">
 {% if logged_in %}
-        <form action="#" class="login">
-          <div class="field">
+        <form action="#" class="login" method="POST">
+          <div class="field">Email:
 		  <input type="email" placeholder="Email Address" name='Email' required value="{{user.Email}}" />
           </div>
-          <div class="field">
-		  <input type="password" placeholder="Password" name='Password' required value="{{user.Password}}" />
+          <div class="field">Password:
+		  <input type="password" placeholder="Password" name='Password' required value="&#9;&#9;&#9;&#9;" />
           </div>
 
-          <div class="field">
+          <div class="field">First :
 		  <input type="text" placeholder="First Name" name='FirstName' required value="{{user.FirstName}}" />
           </div>
-          <div class="field">
+          <div class="field">Last :
 		  <input type="text" placeholder="Last Name" name='LastName' required value="{{user.LastName}}" />
           </div>
-          <div class="field">
+          <div class="field">Phone:
 		  <input type="text" placeholder="Phone Number" name='PhoneNumber' required value="{{user.PhoneNumber}}" />
           </div>
 
@@ -48,7 +48,7 @@
             <input type="submit" name="login" value="Update" />
           </div>
         </form>
-        <form action="#" class="signup">
+        <form action="#" class="signup" method="post">
           <div class="field">
             <input type="text" placeholder="Organization Name" name='org_name' required />
           </div>
