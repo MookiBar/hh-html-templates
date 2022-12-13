@@ -4,46 +4,65 @@
 
 {% block main %}
 
-<h1 id="title">Available Organizations </h1>
+<h1 id="title">Available Resources</h1>
 <hr>
 <div class="content">
-      <div class="searchResults">
+    <div class="searchResults">
         <h3>Your Results:</h3>
         <div class="results">
-          <div class="helpName">
-            <h4><b>Available Localities</b></h4>
-            <ul>
-              {% for loc in localities %}
-              <li>
-                {{loc}}
-              </li>
-            {% endfor %}
-            </ul>
-          </div>
-          <div class="helpName">
-            <h4><b>Available Organizations</b></h4>
-            <ul>
-            {% for orgs in organizations %}
-              <li>
-                <a target="_blank" href="{{ orgs }}">{{ orgs }}</a>
-              </li>
-            {% endfor %}
-            </ul>
-          </div>
-          <div class="helpName">
-            <h4><b>Available Programs</b></h4>
-            <ul>
-            {% for prog in programs %}
-              <li>
-                {{prog}}
-              </li>
-            {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
+            <div class="helpName">
+                <h4><b>Available Localities</b></h4>
+                <ul>
+                    {% for loc in localities %}
+                        <li>
+                            <a style="color:blue" href="/loc?locid={{loc.LocalityID}}">{{loc.Name}}</a>
+                        </li>
+                        <p>Services: {% for srvc in services %}
+                            {% if loc[srvc] %}
+                                {{srvc}}
+                            {% endif %}
+                        {% endfor %}</p>
+                        <p>Hours: {{loc.Hours}}</p>
+                    {% endfor %}
+                </ul>
+            </div>
 
-        <div id="map" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" alt="" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div>
+            <div class="helpName">
+                <h4><b>Available Organizations</b></h4>
+                <ul>
+                    {% for org in organizations %}
+                        <li>
+		                    <a style="color:blue" href="/org?orgid={{org.OrganizationID}}">{{org.Name}}</a>
+                        </li>
+                        <p>Services: {% for srvc in services %}
+                            {% if org[srvc] %}
+                                {{srvc}}
+                            {% endif %}
+                        {% endfor %}</p>
+                        <p>Hours: {{org.Hours}}</p>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="helpName">
+                <h4><b>Available Programs</b></h4>
+                <ul>
+                    {% for prog in programs %}
+                        <li>
+		                    <a style="color:blue" href="/prog?progid={{prog.ProgramID}}">{{prog.Name}}</a>
+                        </li>
+                        <p>Services: {% for srvc in services %}
+                            {% if prog[srvc] %}
+                                {{srvc}}
+                            {% endif %}
+                        {% endfor %}</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="map" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" alt="" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Oops! Something went wrong.</div><div class="gm-err-message">This page didn't load Google Maps correctly. See the JavaScript console for technical details.</div></div></div></div></div>
 
     <script>
 
@@ -176,7 +195,7 @@
             google.maps.event.addDomListener(window, 'load', initMap);
             infoWindow = new google.maps.InfoWindow();
 
-}
+        }
 
 
 	    //google.maps.event.addDomListener(window, 'load', initMap);
@@ -191,7 +210,4 @@
 
 </div>
 
-    
-    
 {% endblock %}
-

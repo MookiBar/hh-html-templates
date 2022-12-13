@@ -6,6 +6,12 @@
     <div class="title-text">
       <div id="user-title" class="title login">Account</div>
     </div>
+{% if error_string %}
+	<p style="color:red">{{error_string}}</p>
+{% endif %}
+{% if success_string %}
+	<p style="color:green">{{success_string}}</p>
+{% endif %}
 
     <div class="form-container">
       <div class="form-inner">
@@ -16,7 +22,7 @@
               placeholder="Email Address"
               name="Email"
               required
-              value=""
+	      value="{{user.Email}}"
             />
           </div>
           <div class="field">
@@ -25,7 +31,7 @@
               placeholder="Password"
               name="Password"
               required
-              value=""
+	      value="{{user.Password}}"
             />
           </div>
 
@@ -35,7 +41,7 @@
               placeholder="First Name"
               name="FirstName"
               required
-              value=""
+	      value="{{user.FirstName}}"
             />
           </div>
           <div class="field">
@@ -44,7 +50,7 @@
               placeholder="Last Name"
               name="LastName"
               required
-              value=""
+	      value="{{user.LastName}}"
             />
           </div>
           <div class="field">
@@ -53,7 +59,7 @@
               placeholder="Phone Number"
               name="PhoneNumber"
               required
-              value=""
+	      value="{{user.PhoneNumber}}"
             />
           </div>
 
@@ -62,13 +68,6 @@
             <a href="/resource_register">Register</a>
           </div>
           
-          <div class="field btn">
-            <div class="btn-layer"></div>
-            <input type="submit" name="login" value="Update" />
-          </div>
-        </form>
-
-        
       </div>
     </div>
   </div>
@@ -100,6 +99,5 @@
       </div>  
   </div>
 </div>
-
 
 {% endblock %}

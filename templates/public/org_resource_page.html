@@ -7,53 +7,109 @@
 <div class="resource-container">
     <div class="resource-name">
         <h1>{{org.Name}}</h1>
-        <img src="https://www.dunamis.co.id/wp-content/uploads/2019/12/Vektor-16.png" alt="">
+        <img src="{{org.ImageURL}}" alt="">
     </div>
 
     <div class="resource-content">
         <div class="resource-info">
-        <h5>Address: {{org.Address}}</h5>
-        <h5>Hours: {{org.Hours}}</h5>
-        <h5>Phone Number: {{org.Number}}</h5>
-    </div>
+            <h5>Address: {{org.HQAddress}}</h5>
+            <h5>Hours: {{org.Hours}}</h5>
+            <h5>Phone Number: {{org.PhoneNumber}}</h5>
+        </div>
         
-        <div class="resource-volunteer">
-            <div class="accept-volunteer">
-                <h5>Accepting Volunteers? </h4>
-                    {% if org.acceptingVolunteers %}
-                        <h5 style='color:green;'>Yes</h5>
-                        <div class="notice-volunteer">
-                            <h5><b>NOTICE</b> to Volunteers</h5>
-                            <textbox class='textbox'>{{org.VolunteerNotice}}</textbox>
-                        </div>
-                    {% else %}
-                            <h5 style='color:red;'>Not at this time</h5>
-                        <div class="notice-volunteer">
-                            <h5><b>NOTICE</b> to Volunteers</h5>
-                            <textbox class="textbox">Please check back in with us at a later date!</textbox>
-                        </div>
-                    {% endif %}
-            </div>
+        <div class="resource-risk">
+            <h5>Currently Offering:</h5>
+                <div class="services">
+                    <ul>
+                        {% for srvc in services %}
+                            {% if org[srvc] %}
+                            <li>
+                                {{srvc}}
+                            </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
         </div>
 
         <div class="resource-risk">
-                <h5><b>NOTICE</b> to those Seeking Help</h5>
-                <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
+            {% if org.AcceptingVolunteers %}
+                <h5>Accepting Volunteers? <a style='color:green;'>Yes</a></h5>
+                <h5><b>NOTICE</b> to Volunteers</h5>
+                <textbox class='textbox'>{{org.VolunteerNotice}}</textbox>
+            {% else %}
+                <h5>Accepting Volunteers? <a style='color:red;'>Not at this time</a></h5>
+                <h5><b>NOTICE</b> to Volunteers</h5>
+                <textbox class="textbox">Please check back in with us at a later date!</textbox>
+            {% endif %}
         </div>
 
-        <div class="resource-list">
-            <h4>Currently Offering:</h4>
-                <div class="services">
-                    <ul>
-                    {% for srvc in services %}
-                        {% if org[srvc] %}
-                        <li>
-                            {{srvc}}
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
+        <div class="resource-risk">
+            <h5><b>NOTICE</b> to those Seeking Help</h5>
+            <textbox class='textbox'>{{org.HelpSeekerNotice}}</textbox>
+        </div>
+
+        <div class="resource-risk">
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+            </head>
+            <body>
+                <h5>Is staff responsive?  
+                    <div class="like grow">
+                        <i class="fa fa-thumbs-up like" type="submit" name="upresp" style="background-color: white;" aria-hidden="true"></i>
+                    </div>
+                    <a>{{upresp}}</a>
+                    <div class="dislike grow">
+                        <i class="fa fa-thumbs-down like" type="submit" name="downresp" style="background-color: white;" aria-hidden="true"></i>
+                    </div>
+                    <a>{{downresp}}</a>
+                </h5>
+            </body>
+        </div>
+
+        <div class="resource-risk">
+            <h5>Website Link: <a style="color:blue" target="_blank" href="{{org.WebsiteLink}}">{{org.WebsiteLink}}</a></h5>
+        </div>
+
+        <div class="resource-risk">
+            <h5><b>Forum</b></h5>
+            <hr>
+            <form>
+                <div class="title-text">
+                    <div id="user-title" class="title login">Post a Comment to the Forum</div>
                 </div>
+                <div class="form-inner">
+                    <div class="field">
+                        <input type="hidden" name="UserID" value="UserID">
+                    </div>
+                    <div class="field">
+                        <input type="hidden" name="TimeStamp" value="TimeStamp">
+                    </div>
+                    <div class="field text-center">
+                        <input type="text" size="47" placeholder="Comment" name='Comment' required />
+                        <button class="forum-button" type="submit" style="display:inline">Post</button>
+                    </div>
+                </div>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>UserID</th>
+                        <th>Date/Time</th>
+                        <th>Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for forums in forumposts|sort(attribute='TimeStamp', reverse = True) %}
+                    <tr>
+                        <td>{{forums[0]}}</td>
+                        <td>{{forums[1]}}</td>
+                        <td>{{forums[2]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr>
         </div>
     </div>
 </div>
