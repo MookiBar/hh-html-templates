@@ -10,8 +10,18 @@
 
                 deviceLat = position.coords.latitude;
                 deviceLong = position.coords.longitude;
+                
+                //Local storage is created here. Can be commented out if needed
                 window.localStorage.setItem('storedLati', deviceLat);
                 window.localStorage.setItem('storedLongi', deviceLong);
+                
+                //This creates a string to feed into a cookie
+                var latcookiestring = "cookieLati=" + deviceLat + ";\"";
+                var loncookiestring = "cookieLongi=" + deviceLong + ";\"";
+
+                //This actually creates cookie
+                document.cookie = latcookiestring;
+                document.cookie = loncookiestring;
 
             }, function () {
                 //handle location error (i.e. if user disallowed location access manually)
