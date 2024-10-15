@@ -40,6 +40,8 @@
 
 
 
+
+
           <div class="signup-link">
           Want to represent an organization or resource? <a href="/resource_register">Register now</a>
         </div>
@@ -48,6 +50,42 @@
             <input type="submit" name="login" value="Update" />
           </div>
         </form>
+
+
+
+      <div class="related-resources">
+        <div class="registered-content">
+          <div class="title-text">
+          <div class="resources-list-title">Your Registered Resources</div>
+        </div>
+
+        <div class="registered-list">Places
+	<ol>
+{% for loc in assoc_locs %}
+          <li>
+		  <a href="./loc?locid={{loc.LocalityID}}">{{loc.Name}}</a>
+		  <br>
+		  <a href="/loc_rep?locid={{loc.LocalityID}}">Edit</a>
+          </li>
+{% endfor %}
+        </ol>
+        </div>
+        <div class="registered-list">Organizations
+	<ol>
+{% for org in assoc_orgs %}
+          <li>
+		  <a href="./org?orgid={{org.OrganizationID}}">{{org.Name}}</a>
+		  <br>
+		  <a href="/org_rep?orgid={{org.OrganizationID}}">Edit</a>
+          </li>
+{% endfor %}
+        </ol>
+        </div>
+
+        </div>
+
+
+
 {% endif %}
       </div>
     </div>
