@@ -1,0 +1,63 @@
+        <div class="resource-risk">
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+            </head>
+            <body>
+                <h5>Is this location safe?  
+                    <div class="like grow">
+			    
+{% if voted.upsafe %}
+                        <button class="fa fa-thumbs-up like" type="submit" name="upsafe" style="background-color: grey;" aria-hidden="true" method=""></button>
+{% else %}
+			<form action="" method="post"><button class="fa fa-thumbs-up like" type="submit" name="newvote" value="upsafe" style="background-color: white;" aria-hidden="true"></button></form>
+{% endif %}
+                    </div>
+                    <a>{{upsafe}}</a>
+                    <div class="dislike grow">
+{% if voted.downsafe %}
+                        <button class="fa fa-thumbs-down like" type="submit" name="downsafe" style="background-color: grey;" aria-hidden="true" method=""></button>
+{% else %}
+			<form action="" method="post"><button class="fa fa-thumbs-down like" type="submit" name="newvote" value="downsafe" style="background-color: white;" aria-hidden="true"></button></form>
+{% endif %}
+                    </div>
+                    <a>{{downsafe}}</a>
+                </h5>
+                <h5>Is this location sanitary?  
+                    <div class="like grow">
+{% if voted.upclean %}
+                        <button class="fa fa-thumbs-up like" type="submit" name="upclean" style="background-color: grey;" aria-hidden="true" method=""></button>
+{% else %}
+			<form action="" method="post"><button class="fa fa-thumbs-up like" type="submit" name="newvote" value="upclean" style="background-color: white;" aria-hidden="true"></button></form>
+{% endif %}
+                    </div>
+                    <a>{{upclean}}</a>
+                    <div class="dislike grow">
+{% if voted.downclean %}
+                        <button class="fa fa-thumbs-down like" type="submit" name="downclean" style="background-color: grey;" aria-hidden="true" method=""></button>
+{% else %}
+			<form action="" method="post"><button class="fa fa-thumbs-down like" type="submit" name="downclean" style="background-color: white;" aria-hidden="true"></button></form>
+{% endif %}
+                    </div>
+                    <a>{{downclean}}</a>
+                </h5>
+                <h5>Is staff responsive?  
+                    <div class="like grow">
+{% if voted.upresp %}
+                        <button class="fa fa-thumbs-up like" type="submit" name="upresp" style="background-color: grey;" aria-hidden="true" method=""></button>
+{% else %}
+			<form action="" method="post"><button class="fa fa-thumbs-up like" type="submit" name="newvote" value="upresp" style="background-color: white;" aria-hidden="true"></button></form>
+{% endif %}
+                    </div>
+                    <a>{{upresp}}</a>
+                    <div class="dislike grow">
+{% if voted.downresp %}
+                        <button class="fa fa-thumbs-down like" type="submit" name="downresp" style="background-color: grey;" aria-hidden="true" method=""></button>
+{% else %}
+			<form action="" method="post"><button class="fa fa-thumbs-down like" type="submit" name="newvote" value="downresp" style="background-color: white;" aria-hidden="true"></button></form>
+{% endif %}
+                    </div>
+                    <a>{{downresp}}</a>
+                </h5>
+            </body>
+        </div>
+
