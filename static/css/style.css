@@ -1223,7 +1223,7 @@
   .dislike {
     display: inline-block;
     cursor: pointer;
-    margin: 5px;
+    margin: 2px;
   }
   
   .dislike:hover,
@@ -1236,3 +1236,4 @@
   .active {
     color: #2EBDD1;
   }
+
