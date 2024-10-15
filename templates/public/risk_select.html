@@ -20,13 +20,12 @@
      
     <div class="form-group">       
       <p>What do you need help with? <br>(Check all that apply)</p>
-        <div required class="input-group">
-            <ul>
-                {% for srvc in services %}
-	                <li><input type="checkbox" id="{{srvc}}" name="{{srvc}}"> {{srvc}}</li>
-                {% endfor %}      
-            </ul>
-        </div>
+    <div required class="input-group">
+        <ul>
+          {% for srvc in services %}
+	  <li><input type="checkbox" id="{{srvc}}" name="{{srvc}}"> {{srvc}}</li>
+          {% endfor %}      
+        </ul>
     </div>
     
     <div class="search-group">	
@@ -39,3 +38,4 @@
 </form> 
 
 {% endblock %}
+
