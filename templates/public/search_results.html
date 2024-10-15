@@ -69,10 +69,13 @@
         function initMap() {
             var infowindow = new google.maps.InfoWindow();
 
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 14,
-                center: { lat: 36.8853, lng: -76.3059 }
-            });
+            var centerLat = ({{ map_center[0] }});
+            var centerLon = ({{ map_center[1] }});
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: { lat: centerLat, lng: centerLon }
+        });
 
             //This string is the standard message given for the user's marker. It'll be used later in the code.
             const contentString = "This is your approximate location within a few miles. This is gathered based on ip address.";
